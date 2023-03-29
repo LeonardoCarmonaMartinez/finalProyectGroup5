@@ -9,18 +9,17 @@ import Form from 'react-bootstrap/Form';
 import RegistroExitosoModal from '../components/ModalRegistro';
 
 const EdicionUsuario = () => {
-  const { setExito, editarUsuario, setEditarUsuario } = useContext(MyContext);
+  const { setExito, editarUsuario } = useContext(MyContext);
   
-  const [ nombre, setNombre ] = useState("");
-  const [ edad, setEdad ] = useState("");
-  const [ direccion, setDireccion ] = useState("");
-  const [ correo, setCorreo ] = useState("");
+  const [ nombre, setNombre ]         = useState("");
+  const [ edad, setEdad ]             = useState("");
+  const [ direccion, setDireccion ]   = useState("");
+  const [ correo, setCorreo ]         = useState("");
   const [ contrasena, setContrasena ] = useState("");
-  const [ celular, setCelular ] = useState("");
-  const [ error, setError ] = useState(false);
+  const [ celular, setCelular ]       = useState("");
+  const [ error, setError ]           = useState(false);
   
-  
-  
+    
   const validarRegistro = (e) => {
     e.preventDefault()
     if(nombre === "" || edad === "" || direccion === ""
@@ -29,11 +28,9 @@ const EdicionUsuario = () => {
     if ( error === false) {
         setExito(true)}
  };
-
-
-      
+ 
   return (
-    <div>
+    <div className="m-4 p-2">
         {editarUsuario.map(usuario => 
             <Form onSubmit={validarRegistro}>
             <Form.Group className="mb-3">
@@ -98,7 +95,7 @@ const EdicionUsuario = () => {
             
             {error ? <p>Debes completar los datos obligatorios</p> : null}
             
-            <Button variant="primary" type="submit"> Guardar cambios </Button>
+            <Button variant="primary" type="submit">Guardar cambios</Button>
     
             < RegistroExitosoModal />
             

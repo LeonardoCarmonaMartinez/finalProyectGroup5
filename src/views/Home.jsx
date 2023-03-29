@@ -11,18 +11,15 @@ const Home = () => {
  const navigate = useNavigate("");
 
  const irAFormularioProductos = () => {
-// //   if() {
-
-// //    }
    navigate(`/formulario`);
 }
   
   return (
     <div className="wallpaper">      
       <h1 className=" m-3 p-3">¡Bienvenido a Conecta-2!</h1>
-      <Button  className="homebutton" onClick={irAFormularioProductos}> VENDE YA!</Button>
+      <Button  className="homebutton" variant="dark" onClick={irAFormularioProductos}> VENDE YA!</Button>
       <Link to="/galeria" className="text-white ms-3 text-decoration-none">
-        <Button onClick={TrueEstado}>COMPRA AQUI</Button>
+        <Button variant="dark" onClick={TrueEstado}>COMPRA AQUI</Button>
       </Link>      
     </div>
   );

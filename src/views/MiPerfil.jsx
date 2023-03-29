@@ -10,11 +10,13 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { Row, Col } from "react-bootstrap";
 
 const Perfil = () => {
-  const { users } = useContext(MyContext);
+  const { users, exitoLogin } = useContext(MyContext);
   const { id_us } = useParams();
   const navigate = useNavigate();
   console.log(users);
 
+  
+  if(exitoLogin === true){
   return (
     <div>
       {users
@@ -56,7 +58,7 @@ const Perfil = () => {
           </div>
         ))}
     </div>
-  );
+  );}
 };
 
 export default Perfil;

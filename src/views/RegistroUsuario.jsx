@@ -11,21 +11,23 @@ import RegistroExitosoModal from '../components/ModalRegistro';
 const Registro = () => {
   const { setExitoRegistro } = useContext(MyContext);
   
-  const [ nombre, setNombre ] = useState("");
-  const [ edad, setEdad ] = useState("");
-  const [ direccion, setDireccion ] = useState("");
-  const [ correo, setCorreo ] = useState("");
+  const [ nombre, setNombre ]         = useState("");
+  const [ edad, setEdad ]             = useState("");
+  const [ direccion, setDireccion ]   = useState("");
+  const [ correo, setCorreo ]         = useState("");
   const [ contrasena, setContrasena ] = useState("");
-  const [ celular, setCelular ] = useState("");
-  const [ error, setError ] = useState(false);
+  const [ celular, setCelular ]       = useState("");
   
   
   const preventRegistro = (e) => {
+    const error = false;
     e.preventDefault()
-    if(nombre === "" || edad === "" || direccion === ""
-        || correo === "" || contrasena === "" || celular === "" ) 
-      { setError(true)}
-    if ( error === false) {
+    if((nombre === "" || edad === "" || direccion === ""
+        || correo === "" || contrasena === "" || celular === "") && (error === false)) {
+          alert("Debes ingresar todos los campos obligatorios")
+    }
+    if((nombre !== "" || edad !== "" || direccion !== ""
+        || correo !== "" || contrasena !== "" || celular !== "") && (error === false)  ) {
         setExitoRegistro(true)}
  };
 
@@ -87,8 +89,6 @@ const Registro = () => {
                         name="imagen"
                         placeholder="Imagen (opcional)" />
         </Form.Group>
-        
-        {error ? <p>Debes completar los datos obligatorios</p> : null}
         
         <Button variant="primary" type="submit"> Registrarse </Button>
 

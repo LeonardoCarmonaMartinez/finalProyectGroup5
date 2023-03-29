@@ -1,58 +1,69 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import MyContext from '../MyContext';
 
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from "react-router-dom";
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 
 const Login = () => {
-  const { users, setExitoLogin } = useContext(MyContext);
+  const { users, exitoLogin, setExitoLogin } = useContext(MyContext);
   const { id_us } = useParams();
+  const navigate = useNavigate();
 
-  const [ correoIngresado, setCorreoIngresado ] = useState("");
+  const [ correoIngresado, setCorreoIngresado ]         = useState("");
   const [ contrasenaIngresada, setContrasenaIngresada ] = useState("");
-  const [ mapLog, setMapLog ] = useState([]);
-  const [ err, setErr ] = useState(false);
-  const [ incorrecto, setIncorrecto ] = useState(false);
+  const [ obtenerToken, setObtenerToken ]               = useState([]);
+  // const [ mapToUser, setMapToUser ]                     = useState([]);
+  // const [ mapToToken, setMapToToken ]                   = useState([]);
 
-  console.log(mapLog)
+  console.log(exitoLogin)
+ 
+  const endpoint2   = "/examplesUsuarios.json";
+
+  const getToken = async () => {
+    const res = await fetch (endpoint2);
+    const infoToken = await res.json();
+
+    setObtenerToken(infoToken)
+  };
+
+  useEffect(() => {
+    getToken()
+  }, []);
+
 
   const HandleLoginSesion = (e) => {
     e.preventDefault()
-    if(correoIngresado === "" || contrasenaIngresada === "" ) {
-      setErr(true)
-    };
 
-    const mapToLogin = users.map(us => {
-            return{
-              idUser: us.id_usuario,
-              emailUser: us.correo,
-              passUser: us.contrasena
-            }
-          }
-    )
-      setMapLog(mapToLogin)
+    if(correoIngresado === "" || contrasenaIngresada === "" ) {
+      alert("Debes ingresar tus datos para ingresar")
+    }
+    else{
     
-    
-    mapLog.map(m => {
-      if(m.idUser === id_us && m.emailUser === correoIngresado && m.passUser === contrasenaIngresada) {
-        // setExitoLogin(true)
-          console.log("Credenciales válidas")}
-        if ( incorrecto === false) {
-          setIncorrecto(true)
-        }
-    })  
-  };
+    if( (users.filter(us => us.id_usuario === obtenerToken.map(ot => ot.id_usuario_token))) &&
+          (users.filter(user => user.correo === correoIngresado)) && 
+          (users.filter(u => u.contrasena === contrasenaIngresada)) &&
+          (users.filter(use => use.token === obtenerToken.map(obt => obt.token)))) {
+            console.log("Credenciales válidas")
+            setExitoLogin(true)
+      }
+      else { alert("Datos ingresados incorrectos")}
+
+      if(exitoLogin === true) {
+        navigate(`/perfil/${id_us}`)
+      }
+  }};
+
+
     
   return (
     <Form className='login' onSubmit={HandleLoginSesion}>
       <Form.Group className="mb-3" controlId="formBasicId">
         <Form.Control type="hidden"
                       name="idusuario"
-                      value={id_us}
         />
       </Form.Group>
 
@@ -74,9 +85,7 @@ const Login = () => {
 
       <Button variant="primary" type="submit">
         Iniciar Sesión 
-      </Button>
-      { err ? <p>Debes ingresar todos los datos</p> : null}
-      { incorrecto ? <p>Los datos ingresados son incorrectos</p> : null}
+      </Button>     
     </Form>
   );
 };

@@ -33,9 +33,9 @@ function App() {
   const [ exitoLogin, setExitoLogin ]             = useState(false);
   const [ searchConcept, setSearchConcept ]       = useState("");
   const [ handlerSearching, setHandlerSearching]  = useState([]);
-  const [ infoUnificada, setInfoUnificada] = useState([]);
-  const [ filtroUnificada, setFiltroUnificada] = useState([]);
-  const [ editarUsuario, setEditarUsuario] = useState([]);
+  const [ infoUnificada, setInfoUnificada]        = useState([]);
+  const [ filtroUnificada, setFiltroUnificada]    = useState([]);
+  const [ editarUsuario, setEditarUsuario]        = useState([]);
   
   const globalState = { changeState, setChangeState,
                         products, setProducts,
@@ -53,10 +53,12 @@ function App() {
                       };
 
   //Consumo de Json
-  const endpoint = "/examplesProductos.json";
-  const endpoint2 = "/examplesUsuarios.json";
-  const endpoint3 = "/unificatorio.json";
-  const endpoint4 = "/editarusuario.json";
+  const endpoint    = "/examplesProductos.json";
+  const endpoint2   = "/examplesUsuarios.json";
+  const endpoint3   = "/unificatorio.json";
+  const endpoint4   = "/editarusuario.json";
+
+  // ("http://localhost:3001/producto/:idproducto")
 
   const getProduct = async () => {
     const res = await fetch (endpoint);
@@ -109,16 +111,16 @@ function App() {
         < BrowserRouter >
           < BarraNavegacion />
             < Routes>
-              < Route path="/" element={< Home />} />
-              < Route path="/login" element={< Login />} />
-              < Route path="/registro" element={< Registro />} />
-              < Route path="/perfil/:id_us" element={< Perfil />} />
-              < Route path="/formulario" element={< Formulario />} />
-              < Route path="/galeria" element={< Galeria />} />
-              < Route path="/infoproducto/:id_producto" element={< InfoProducto />} />
-              < Route path="/enventa/:id" element={< EnVenta />} />
-              < Route path="/editarusuario" element={< EdicionUsuario />} />
-              < Route path="*" element={< NotFound />}/>
+              < Route path  = "/" element={< Home />} />
+              < Route path  = "/login" element={< Login />} />
+              < Route path  = "/registro" element={< Registro />} />
+              < Route path  = "/perfil/:id_us" element={< Perfil />} />
+              < Route path  = "/formulario" element={< Formulario />} />
+              < Route path  = "/galeria" element={< Galeria />} />
+              < Route path  = "/infoproducto/:id_producto" element={< InfoProducto />} />
+              < Route path  = "/enventa/:id" element={< EnVenta />} />
+              < Route path  = "/editarusuario" element={< EdicionUsuario />} />
+              < Route path  = "*" element={< NotFound />}/>
             </ Routes >    
         </ BrowserRouter >
       </MyContext.Provider>

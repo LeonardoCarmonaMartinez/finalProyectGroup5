@@ -7,7 +7,8 @@
     "correo"        : "pericodelospalotes@gmail.com",
     "contrasena"    : "perico123delosPalotes",
     "telefono"      : "+56 9 12312312",
-    "imagen"        : " "       
+    "imagen"        : " ",
+    "token"         : "12345678910"      
   },
 
   {
@@ -18,7 +19,8 @@
     "correo"        : "j.perez@gmail.com",
     "contrasena"    : "miContraseñaesMala",
     "telefono"      : "+56 9 66661666",
-    "imagen"        : " "       
+    "imagen"        : " ",
+    "token"         : "12345678911"         
   },
 
   {
@@ -29,6 +31,7 @@
     "correo"        : "m.adlnieves@gmail.com",
     "contrasena"    : "seMechispotio",
     "telefono"      : "+56 9 88888881",
-    "imagen"        : " "       
+    "imagen"        : " ",
+    "token"         : "12345678912"         
   }
 ]

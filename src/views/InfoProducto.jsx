@@ -25,7 +25,7 @@ const InfoProducto = () => {
             </Col>
             <Col>              
               <p className="descrip">Descripción:{info.desc}</p>
-              <p className="fw-bold">Categoria:{info.category}</p>
+              
               <p className="fw-bold fs-2">Precio ${info.price}</p>
               <p></p>
               <p></p>

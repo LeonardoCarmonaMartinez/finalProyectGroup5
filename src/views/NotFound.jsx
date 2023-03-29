@@ -6,7 +6,7 @@ const NotFound = () => {
   
   return (
     <Container className="container-notFound">
-      <h1>La ruta seleccionada no está disponible 😖</h1>
+      <h1>La ruta seleccionada no está disponible :/</h1>
     </Container>
   );
 };

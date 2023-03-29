@@ -12,14 +12,15 @@ import Navbar from 'react-bootstrap/Navbar';
 
 
 const BarraNavegacion = () => {
-  const { products, searchConcept, setSearchConcept, setHandlerSearching, setChangeState} = useContext(MyContext);
+  const { products, searchConcept, setSearchConcept, setHandlerSearching, setChangeState, exitoLogin} = useContext(MyContext);
+
   const navigate = useNavigate();
 
   const otroEstado = () => {
     const valueFalse = false;
     setChangeState(valueFalse)
 
-  }; 
+  };
 
   const handlerClick = () => {
     if(searchConcept !== "") {
@@ -36,7 +37,7 @@ const BarraNavegacion = () => {
 
 
   return (
-    <div className='navEd'>
+    <div>
     <Navbar className='navEdit' bg="dark" expand="lg" variant="dark">
       <Container>
         <Link to="/" className="text-white ms-3 text-decoration-none">
